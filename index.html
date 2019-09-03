@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+      .main-menu {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+      }
+      .main-menu li {
+        list-style: none;
+        outline: 1px solid #0c3370;
+        display: inline-block;
+        width: 100px;
+        background-color: #aabfe0;
+        text-align: center;
+      }
+      .sub-menu {
+        display: none;
+        position: absolute;
+        left: -40px;
+      }
+      .nav-link {
+        position: relative;
+      }
+      .sub-menu1 {
+        list-style: none;
+        display: none;
+        position: absolute;
+        top: 1px;
+        left: 62px;
+      }
+      .active-link {
+        position: relative;
+      }
+      .active-link:hover .sub-menu {
+        display: block;
+      }
+      .nav-link:hover .sub-menu1 {
+        display: block;
+      }
+    </style>
+    <title>My Menu With JS!</title>
+  </head>
+  <body>
+    <!--  
+	<ul class="main-menu">		
+		<li class="active-link"><a href="#">link1</a>
+		<ul class="sub-menu">
+			<li class="nav-link"><a href="#">link1.1</a>
+			<ul class="sub-menu1">
+				<li><a href="#">link1.1.1</a></li>	          		
+			</ul>
+			</li>
+			<li class="nav-link"><a href="#">link1.2</a>
+			<ul class="sub-menu1">
+				<li><a href="#">link1.2.1</a></li>	          		
+			</ul>
+			</li>
+			<li class="nav-link"><a href="#">link1.3</a>
+			<ul class="sub-menu1">
+				<li><a href="#">link1.3.1</a></li>	          		
+			</ul>
+			</li>
+		</ul>
+		</li>		
+	</ul>
+-->
+    <script>
+      let aHref = document.createElement("a");
+      aHref.href = "#";
+      aHref.innerText = "link";
+      let liDeep = document.createElement("li");
+      liDeep.append(aHref);
+      let ulSubMenu1 = document.createElement("ul");
+      ulSubMenu1.className = "sub-menu1";
+      ulSubMenu1.append(liDeep);
+
+      let liNavLink = document.createElement("li");
+      liNavLink.className = "nav-link";
+      let aHrefThird = aHref.cloneNode(true);
+      liNavLink.prepend(aHrefThird);
+      liNavLink.append(ulSubMenu1);
+
+      let liNavLink2 = liNavLink.cloneNode(true);
+      let liNavLink3 = liNavLink.cloneNode(true);
+
+      let ulSubMenu = document.createElement("ul");
+      ulSubMenu.className = "sub-menu";
+      ulSubMenu.append(liNavLink);
+      ulSubMenu.append(liNavLink2);
+      ulSubMenu.append(liNavLink3);
+
+      let liActiveLink = document.createElement("li");
+      liActiveLink.className = "active-link";
+      let aHrefSecond = aHref.cloneNode(true);
+      liActiveLink.prepend(aHrefSecond);
+      liActiveLink.append(ulSubMenu);
+
+      let ulMainMenu = document.createElement("ul");
+      ulMainMenu.className = "main-menu";
+      ulMainMenu.append(liActiveLink);
+
+      document.body.prepend(ulMainMenu);
+    </script>
+  </body>
+</html>
